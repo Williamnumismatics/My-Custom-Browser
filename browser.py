@@ -23,5 +23,15 @@ back_btn = QAction("Back", window)
 back_btn.triggered.connect(browser.back)
 toolbar.addAction(back_btn)
 
+#Forward Button
+forward_btn = QAction("Forward", window)
+forward_btn.triggered.connect(browser.forward)
+toolbar.addAction(forward_btn)
+
+#Reload Button
+reload_btn = QAction("Reload", window)
+reload_btn.triggered.connect(browser.reload)
+toolbar.addAction(back_btn)
+
 window.show()
 sys.exit(app.exec_())
