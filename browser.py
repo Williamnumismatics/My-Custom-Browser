@@ -10,23 +10,18 @@ toolbar.addWidget(url_bar)
 
 #Search Bar
 
-def get_current_browser():
-    return tabs.currentWidget()  # Returns the QWebEngineView of the active tab
-
-
 def navigate_to_url():
     text = url_bar.text().strip()
     
-    # Check if it looks like a URL
     if text.startswith("http://") or text.startswith("https://"):
         url = text
-    elif "." in text:  # simple check for domain names
+    elif "." in text:
         url = "http://" + text
     else:  # treat as search query
         query = "+".join(text.split())
         url = f"https://www.google.com/search?q={query}"
     
-    get_current_browser().setUrl(QUrl(url))
+    browser.setUrl(QUrl(url))
 
 #Main Window
 window = QMainWindow()
