@@ -11,3 +11,6 @@ window.setGeometry(100,100,1200,800)
 browser = QWebEngineView()
 browser.setUrl("www.google.com")
 window.setCentralWidget(browser)
+
+window.show()
+sys.exit(app.exec_())
