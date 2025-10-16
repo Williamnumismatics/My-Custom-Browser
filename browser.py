@@ -9,7 +9,7 @@ window.setWindowTitle("Pyra")
 window.setGeometry(100,100,1200,800)
 
 browser = QWebEngineView()
-browser.setUrl("www.google.com")
+browser.setUrl("https://www.google.com")
 window.setCentralWidget(browser)
 
 window.show()
