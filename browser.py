@@ -1,10 +1,20 @@
-from PyQt5.QtWidgets import QApplication, QMainWindow, QToolBar, QAction
+from PyQt5.QtWidgets import QApplication, QMainWindow, QToolBar, QAction, QLineEdit
 from PyQt5.QtWebEngineWidgets import QWebEngineView
 from PyQt5.QtCore import QUrl
 import sys
 
 app = QApplication(sys.argv)
 toolbar = QToolBar()
+url_bar = QLineEdit()
+toolbar.addWidget(url_bar)
+
+#Search Bar
+def navigate_to_url():
+    url = url_bar.text()
+    if not url.startswith("http"):
+        url = "http://" + url
+    browser.setUrl(QUrl(url))
+url_bar.returnPressed.connect(navigate_to_url)
 
 #Main Window
 window = QMainWindow()
@@ -31,7 +41,8 @@ toolbar.addAction(forward_btn)
 #Reload Button
 reload_btn = QAction("Reload", window)
 reload_btn.triggered.connect(browser.reload)
-toolbar.addAction(back_btn)
+toolbar.addAction(reload_btn)
 
+browser.urlChanged.connect(lambda q: url_bar.setText(q.toString()))
 window.show()
-sys.exit(app.exec_())
+sys.exit(app.exec_())   
